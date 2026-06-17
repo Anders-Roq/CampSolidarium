@@ -2,6 +2,7 @@ package com.marcelo.campsolidarium.repositorios;
 
 import com.marcelo.campsolidarium.entidades.Campanha;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RepositorioCampanha {
@@ -10,7 +11,21 @@ public class RepositorioCampanha {
     
     private RepositorioCampanha(){}
     
+        static{
+        Campanha camp = new Campanha();
+        camp.setDataInicio("01/01/2026");
+        camp.setDataFinal("15/06/2026");
+        camp.setObjetivo("Arrecadar água potável");
+        camp.setDescricao("Campanha para ajudar as vitimas das enchentes de Caruaru");
+        camp.setOng(RepositorioONGs.readAll().get(0));
+        camp.setEmergencia(RepositorioEmergencia.readAll().get(0));
+        camp.setCategorias(Arrays.asList("Alimentos", "Limpeza"));
+        camp.setCodigo(campanhas.size()+1);
+        campanhas.add(camp);
+    }
+    
     public static void create(Campanha camp){
+        camp.setCodigo(campanhas.size()+1);
         campanhas.add(camp);
     }
     

@@ -4,9 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Campanha {
@@ -15,15 +15,19 @@ public class Campanha {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int codigo;
     
-    @Temporal(TemporalType.DATE)
-    Date dataInicio;
+    String dataInicio;
     
-    @Temporal(TemporalType.DATE)
-    Date dataFinal;
+    String dataFinal;
     
     String descricao;
         
     String objetivo;
+    
+    private ONGs ong;
+        
+    private Emergencia emergencia;
+    
+    private List<String> categorias;
 
     public Campanha() {}
 
@@ -35,19 +39,19 @@ public class Campanha {
         this.codigo = codigo;
     }
 
-    public Date getDataInicio() {
+    public String getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Date dataInicio) {
+    public void setDataInicio(String dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public Date getDataFinal() {
+    public String getDataFinal() {
         return dataFinal;
     }
 
-    public void setDataFinal(Date dataFinal) {
+    public void setDataFinal(String dataFinal) {
         this.dataFinal = dataFinal;
     }
 
@@ -66,5 +70,30 @@ public class Campanha {
     public void setObjetivo(String objetivo) {
         this.objetivo = objetivo;
     } 
+
+    public ONGs getOng() {
+        return ong;
+    }
+
+    public void setOng(ONGs ong) {
+        this.ong = ong;
+    }
+
+    public Emergencia getEmergencia() {
+        return emergencia;
+    }
+
+    public void setEmergencia(Emergencia emergencia) {
+        this.emergencia = emergencia;
+    }
+
+    public List<String> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<String> categorias) {
+        this.categorias = categorias;
+    }
+    
     
 }
