@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+    <servlet>
+        <servlet-name>CampanhaServlet</servlet-name>
+        <servlet-class>com.marcelo.campsolidarium.controladores.CampanhaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmergenciaServlet</servlet-name>
+        <servlet-class>com.marcelo.campsolidarium.controladores.EmergenciaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsumosServlet</servlet-name>
+        <servlet-class>com.marcelo.campsolidarium.controladores.InsumosServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ONGsServlet</servlet-name>
+        <servlet-class>com.marcelo.campsolidarium.controladores.ONGsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CampanhaServlet</servlet-name>
+        <url-pattern>/CampanhaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmergenciaServlet</servlet-name>
+        <url-pattern>/EmergenciaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsumosServlet</servlet-name>
+        <url-pattern>/InsumosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ONGsServlet</servlet-name>
+        <url-pattern>/ONGsServlet</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
