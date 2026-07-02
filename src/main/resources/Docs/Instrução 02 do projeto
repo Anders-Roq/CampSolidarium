@@ -1,0 +1,9 @@
+Nesta atividade vocês precisarão criar a gestão das campanhas.
+
+O sistema possui duas perspectivas, a da ONG e a do usuário.
+
+Na perspectiva da ONG, uma ONG pode se cadastrar, fazer login no sistema e gerenciar suas informações.
+
+A principal funcionalidade da ONG é gerenciar campanhas. Assim, a ONG pode criar uma nova campanha, relacionando a uma lista de insumos e a uma emergência. Na tela inicial a ONG pode ver todas as campanhas que ela criou. Neste caso, ela não pode ver campanhas de outras ONGs.
+
+Na perspectiva do usuário, este não se logará. Assim, na tela inicial serão apresentadas todas as campanhas cadastradas. Ao selecionar uma campanha, o sistema deve mostrar todas as informações desta campanha, bem como o nome da ONG que a criou. Ao clicar na ONG, uma nova página deve ser exibida com as informações da ONG, bem como todas as campanhas cadastradas por esta.

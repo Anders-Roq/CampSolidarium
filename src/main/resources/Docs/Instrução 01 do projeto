@@ -1,0 +1,10 @@
+CRUDs do projeto em anexo, usando JSF e Primefaces.
+
+A imagem em anexo apresenta o diagrama de classes do sistema CampSolidarium. 
+A ideia por trás deste sistema é permitir que ONGs possam cadastrar campanhas de arrecadação para eventos em particular: por exemplo. 
+Digamos que um terremoto atinja a cidade de Caruaru, a ONG Todos pelo Agreste pode criar uma campanha para arrecadar água potável e medicamentos. 
+A ideia agora é que vocês façam apenas os CRUDs das entidades ONG, Insumo e Emergência.
+
+Para a realização desta tarefa vocês devem usar o que foi aprendido até agora em sala de aula, ou seja, Servlets e JSPs.
+
+Lembrem-se que você precisam criar os repositórios das entidades citadas.
