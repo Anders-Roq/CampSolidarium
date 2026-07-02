@@ -1,51 +1,105 @@
-<%-- 
-    Document   : CadastroDeInsumos
-    Created on : 16 de jun. de 2026, 09:36:49
-    Author     : marcelo
---%>
 <%@page import="com.marcelo.campsolidarium.entidades.Insumos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
-<head>
+
+    <head>
+
+        <meta charset="UTF-8">
+        
+        <link rel="stylesheet" href="css/style.css">
+        
         <title>Cadastro de Insumos</title>
-
+                
     </head>
+
     <body>
-        <h1>Cadastro de Insumo</h1>
 
-        <%
+        <div class="container">
 
-            Insumos insuEditar = (Insumos) session.getAttribute("insuEditar");
-            session.removeAttribute("insuEditar");
-            if (insuEditar != null) {%>
+            <h1>Cadastro de Insumos</h1>
 
-        <h2>Editar Insumo</h2>
-        <form method="post" action="InsumosServlet">
-            <input type="hidden" name="operacao" value="editar"/>
-            <input type="hidden" name="codigo" value="<%= insuEditar.getCodigo()%>"/> 
-            Nome: <input type="text" name="nome" value="<%= insuEditar.getNome()%>"/><br/>
-            Marca: <input type="text" name="marca" value="<%= insuEditar.getMarca()%>"/><br/>
-            Categoria: <input type="text" name="categoria" value="<%= insuEditar.getCategoria()%>"/><br/>
-            <button type="submit">Salvar</button>
-        </form>
+            <%
 
-        <% } else { %>
+                Insumos insuEditar = (Insumos) session.getAttribute("insuEditar");
+                session.removeAttribute("insuEditar");
 
-        <h2>Cadastrar Insumo</h2>
-        <form method="post" action="InsumosServlet">
-            <input type="hidden" name="operacao" value="cadastrar"/>
-            Nome: <input type="text" name="nome"/><br/>
-            Marca: <input type="text" name="marca"/><br/>
-            Categoria: <input type="text" name="categoria"/><br/>
-            <button type="submit">Cadastrar</button>
-        </form>
+                if (insuEditar != null) {
 
-        <% }%>
-        <br>
-        <a href="InsumosServlet"><button>Ver insumos cadastrados</button></a>
-        <br>
-        <a href="index.html"><button>Página Inicial</button></a>
+            %>
+
+            <h2>Editar Insumo</h2>
+
+            <form method="post" action="InsumosServlet">
+
+                <input type="hidden" name="operacao" value="editar"/>
+                <input type="hidden" name="codigo" value="<%= insuEditar.getCodigo()%>"/>
+
+                <label>Nome</label>
+                <input type="text" name="nome" value="<%= insuEditar.getNome()%>">
+
+                <label>Marca</label>
+                <input type="text" name="marca" value="<%= insuEditar.getMarca()%>">
+
+                <label>Categoria</label>
+                <input type="text" name="categoria" value="<%= insuEditar.getCategoria()%>">
+
+                <div class="botoes">
+
+                    <button class="botao salvar">
+                        Salvar
+                    </button>
+
+                    <a class="botao voltar" href="InsumosServlet">
+                        Cancelar
+                    </a>
+
+                </div>
+
+            </form>
+
+            <%
+
+            } else {
+
+            %>
+
+            <h2>Cadastrar Insumo</h2>
+
+            <form method="post" action="InsumosServlet">
+
+                <input type="hidden" name="operacao" value="cadastrar"/>
+
+                <label>Nome</label>
+                <input type="text" name="nome">
+
+                <label>Marca</label>
+                <input type="text" name="marca">
+
+                <label>Categoria</label>
+                <input type="text" name="categoria">
+
+                <div class="botoes">
+
+                    <button class="botao salvar">
+                        Cadastrar
+                    </button>
+
+                    <a class="botao voltar" href="InsumosServlet">
+                        Cancelar
+                    </a>
+
+                </div>
+
+            </form>
+
+            <%    }
+
+            %>
+
+        </div>
+
     </body>
-    
+
 </html>

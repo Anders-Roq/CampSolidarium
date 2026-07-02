@@ -1,59 +1,101 @@
-<%-- 
-    Document   : ongs
-    Created on : 16 de jun. de 2026, 09:35:51
-    Author     : marcelo
---%>
 <%@page import="java.util.List"%>
 <%@page import="com.marcelo.campsolidarium.entidades.ONGs"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
- <head>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        
         <title>ONGs Cadastradas</title>
+
     </head>
+
     <body>
-        <h1>ONGs Cadastradas</h1>
 
-        <%
-            String msg = (String) session.getAttribute("msg");
-            if (msg != null) {
-        %>
-        <h4><%= msg%></h4>
-        <%
-                session.removeAttribute("msg");
-            }
-        %>
+        <div class="container">
 
-        <a href="CadastroDeONGs.jsp">Cadastrar nova ONG</a>
+            <h1>ONGs Cadastradas</h1>
 
-        <%
-            List<ONGs> ongs = (List<ONGs>) session.getAttribute("ongs");
-        %>
-
-        <table border="1">
-            <tr>
-                <td>Código</td>
-                <td>Nome</td>
-                <td>Ações</td>
-            </tr>
             <%
-                if (ongs != null) {
-                    for (ONGs ong : ongs) {
+                String msg = (String) session.getAttribute("msg");
+                if (msg != null) {
             %>
-            <tr>
-                <td><%= ong.getCodigo()%></td>
-                <td><%= ong.getNome()%></td>
-                <td>
-                    <a href="ONGsServlet?operacao=excluir&login=<%= ong.getLogin()%>">Excluir</a>
-                    /    
-                    <a href="ONGsServlet?operacao=editar&login=<%= ong.getLogin()%>">Editar</a>
-                </td>
-            </tr>
+
+            <div class="mensagem">
+                <%= msg%>
+            </div>
+
             <%
-                    }
+                    session.removeAttribute("msg");
                 }
             %>
-        </table>
-        <a href="index.html">Página Inicial</a>
+
+            <div class="topo">
+
+                <a class="btn novo" href="CadastroDeONGs.jsp">
+                    Cadastrar nova ONG
+                </a>
+
+                <a class="btn home" href="index.jsp">
+                    Página Inicial
+                </a>
+
+            </div>
+
+            <%
+                List<ONGs> ongs = (List<ONGs>) session.getAttribute("ongs");
+            %>
+
+            <table>
+
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+
+                <%
+                    if (ongs != null) {
+
+                        for (ONGs ong : ongs) {
+
+                %>
+
+                <tr>
+
+                    <td><%= ong.getCodigo()%></td>
+
+                    <td><%= ong.getNome()%></td>
+
+                    <td>
+
+                        <a class="acao editar"
+                           href="ONGsServlet?operacao=editar&login=<%= ong.getLogin()%>">
+                            Editar
+                        </a>
+
+                        <a class="acao excluir"
+                           href="ONGsServlet?operacao=excluir&login=<%= ong.getLogin()%>">
+                            Excluir
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                <%
+
+                        }
+
+                    }
+
+                %>
+
+            </table>
+
+        </div>
+
     </body>
 </html>
