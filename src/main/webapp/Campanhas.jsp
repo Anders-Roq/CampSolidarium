@@ -2,13 +2,17 @@
 <%@page import="com.marcelo.campsolidarium.entidades.Insumos"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
+
     <head>
+
         <meta charset="UTF-8">
+
         <link rel="stylesheet" href="css/style.css">
 
-        <title>CampSolidárium</title>
+        <title>Campanhas Cadastradas</title>
 
     </head>
 
@@ -16,22 +20,39 @@
 
         <div class="container">
 
-            <h1>Bem Vindo ao CampSolidárium!</h1>
+            <h1>Campanhas Cadastradas</h1>
 
-            <h2>Abaixo escolha a opção de deseja:</h2>
+            <%
 
-            <div class="menu">
-                <a href="ONGsServlet">ONGs</a>
-                <a href="EmergenciaServlet">Emergências</a>
-                <a href="InsumosServlet">Insumos</a>
-                <a href="CampanhaServlet">Campanhas</a>
+                String msg = (String) session.getAttribute("msg");
+
+                if (msg != null) {
+
+            %>
+
+            <div class="mensagem">
+                <%= msg%>
             </div>
 
-        </div>
-        
-        <div class="container">
+            <%
 
-            <h1>Campanhas Cadastradas</h1>
+                    session.removeAttribute("msg");
+
+                }
+
+            %>
+
+            <div class="topo">
+
+                <a class="btn novo" href="CadastroDeCampanhas.jsp">
+                    Cadastrar nova Campanha
+                </a>
+
+                <a class="btn home" href="index.jsp">
+                    Página Inicial
+                </a>
+
+            </div>
 
             <%    List<Campanha> campanhas
                         = (List<Campanha>) session.getAttribute("campanhas");
@@ -55,6 +76,8 @@
                     <th>Emergência</th>
 
                     <th>Insumos</th>
+
+                    <th>Ações</th>
 
                 </tr>
 
@@ -96,6 +119,20 @@
                         %>
                     </td>
 
+                    <td>
+
+                        <a class="acao editar"
+                           href="CampanhaServlet?operacao=editar&codigo=<%= camp.getCodigo()%>">
+                            Editar
+                        </a>
+
+                        <a class="acao excluir"
+                           href="CampanhaServlet?operacao=excluir&codigo=<%= camp.getCodigo()%>">
+                            Excluir
+                        </a>
+
+                    </td>
+
                 </tr>
 
                 <%
@@ -110,6 +147,6 @@
 
         </div>
 
-
     </body>
+
 </html>

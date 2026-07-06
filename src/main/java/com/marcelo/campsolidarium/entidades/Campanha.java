@@ -1,33 +1,24 @@
 package com.marcelo.campsolidarium.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
-@Entity
 public class Campanha {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int codigo;
+   private int codigo;
     
-    String dataInicio;
+   private String dataInicio;
     
-    String dataFinal;
+   private String dataFinal;
     
-    String descricao;
+   private String descricao;
         
-    String objetivo;
+   private String objetivo;
     
     private ONGs ong;
         
     private Emergencia emergencia;
     
-    private List<String> categorias;
+    private List<Insumos> insumos;
 
     public Campanha() {}
 
@@ -87,12 +78,12 @@ public class Campanha {
         this.emergencia = emergencia;
     }
 
-    public List<String> getCategorias() {
-        return categorias;
+    public List<Insumos> getInsumos() {
+        return insumos;
     }
 
-    public void setCategorias(List<String> categorias) {
-        this.categorias = categorias;
+    public void setInsumos(List<Insumos> insumos) {
+        this.insumos = insumos;
     }
     
     

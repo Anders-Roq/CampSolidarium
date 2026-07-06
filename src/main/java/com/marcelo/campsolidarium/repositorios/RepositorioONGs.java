@@ -24,7 +24,7 @@ public class RepositorioONGs {
         ongs.add(ong);
     }
     
-     public static ONGs read(String login) {
+    public static ONGs read(String login) {
         for (ONGs ong : ongs) {
             if (ong.getLogin().equals(login)) {
                 return ong;
@@ -33,6 +33,16 @@ public class RepositorioONGs {
         return null;
     }
 
+    public static ONGs readPorCodigo(int codigo) {
+        for (ONGs ong : ongs) {
+            if (ong.getCodigo() == codigo) {
+                return ong;
+            }
+        }
+        return null;
+    }
+
+     
     public static void update(ONGs ongNew) {
         for (ONGs ong : ongs) {
             if (ong.getCodigo() == ongNew.getCodigo()) {
@@ -52,5 +62,7 @@ public class RepositorioONGs {
     public static List<ONGs> readAll(){
         return ongs;
     }
+    
+    
     
 }

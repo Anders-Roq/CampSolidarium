@@ -11,18 +11,19 @@ public class RepositorioCampanha {
     
     private RepositorioCampanha(){}
     
-        static{
+    static {
         Campanha camp = new Campanha();
         camp.setDataInicio("01/01/2026");
         camp.setDataFinal("15/06/2026");
         camp.setObjetivo("Arrecadar água potável");
-        camp.setDescricao("Campanha para ajudar as vitimas das enchentes de Caruaru");
+        camp.setDescricao("Campanha para ajudar as vítimas das enchentes de Caruaru");
         camp.setOng(RepositorioONGs.readAll().get(0));
         camp.setEmergencia(RepositorioEmergencia.readAll().get(0));
-        camp.setCategorias(Arrays.asList("Alimentos", "Limpeza"));
+        camp.setInsumos(Arrays.asList(RepositorioInsumos.readAll().get(0)));
         camp.setCodigo(campanhas.size()+1);
         campanhas.add(camp);
     }
+
     
     public static void create(Campanha camp){
         camp.setCodigo(campanhas.size()+1);

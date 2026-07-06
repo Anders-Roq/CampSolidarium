@@ -1,22 +1,14 @@
 package com.marcelo.campsolidarium.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
 public class Insumos {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int codigo;
+   private int codigo;
     
-    String nome;
+   private String nome;
     
-    String marca;
+   private String marca;
     
-    String categoria;
+   private String categoria;
     
     public Insumos(){}
 

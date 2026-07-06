@@ -1,24 +1,17 @@
 package com.marcelo.campsolidarium.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
-@Entity
 public class ONGs {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int codigo;
+    private int codigo;
     
-    String nome;
+   private String nome;
     
-    String login;
+   private String login;
     
-    String senha;
+   private String senha;
     
-    public ONGs(){}
+   public ONGs(){}
 
     public int getCodigo() {
         return codigo;

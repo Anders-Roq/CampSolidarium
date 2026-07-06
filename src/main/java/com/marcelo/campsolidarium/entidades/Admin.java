@@ -1,15 +1,11 @@
 package com.marcelo.campsolidarium.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
-@Entity
 public class Admin {
+     
+    private String login;
     
-    @Id            
-    String login;
-    
-    String senha;
+    private String senha;
     
     public Admin(){}
 

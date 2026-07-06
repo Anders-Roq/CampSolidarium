@@ -1,23 +1,14 @@
 package com.marcelo.campsolidarium.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-
-@Entity
 public class Emergencia {
+
+   private int codigo;
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int codigo;
+   private String local;
     
-    String local;
+   private String tipo;
     
-    String tipo;
-    
-    String descricao;
+   private String descricao;
     
     public Emergencia(){}
 
