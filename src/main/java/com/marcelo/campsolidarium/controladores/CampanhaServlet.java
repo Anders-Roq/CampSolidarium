@@ -28,6 +28,12 @@ public class CampanhaServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
+        if (session.getAttribute("adminLogado") == null) {
+            session.setAttribute("msg", "Você precisa estar logada para acessar essa área.");
+            response.sendRedirect("index.jsp");
+            return;
+        }        
+
         String op = request.getParameter("operacao");
 
         if ("excluir".equals(op)) {
@@ -63,6 +69,13 @@ public class CampanhaServlet extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+        
+        if (session.getAttribute("adminLogado") == null) {
+            session.setAttribute("msg", "Você precisa estar logada para acessar essa área.");
+            response.sendRedirect("index.jsp");
+            return;
+        }
+        
         String op = request.getParameter("operacao");
         String dataInicio = request.getParameter("dataInicio");
         String dataFinal = request.getParameter("dataFinal");

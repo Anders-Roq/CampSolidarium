@@ -1,5 +1,7 @@
+<%@page import="com.marcelo.campsolidarium.entidades.ONGs"%>
 <%@page import="com.marcelo.campsolidarium.entidades.Campanha"%>
 <%@page import="com.marcelo.campsolidarium.entidades.Insumos"%>
+<%@page import="com.marcelo.campsolidarium.repositorios.RepositorioCampanha"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,53 +16,52 @@
 
     <body>
 
+        <%@ include file="Navbar.jsp" %>
+
         <div class="container">
 
             <h1>Bem Vindo ao CampSolidárium!</h1>
 
-            <h2>Abaixo escolha a opção de deseja:</h2>
+            <%
+                String msg = (String) session.getAttribute("msg");
+                if (msg != null) {
+            %>
 
-            <div class="menu">
-                <a href="ONGsServlet">ONGs</a>
-                <a href="EmergenciaServlet">Emergências</a>
-                <a href="InsumosServlet">Insumos</a>
-                <a href="CampanhaServlet">Campanhas</a>
+            <div class="mensagem">
+                <%= msg%>
             </div>
 
-        </div>
-        
-        <div class="container">
+            <%
+                    session.removeAttribute("msg");
+                }
+            %>
 
-            <h1>Campanhas Cadastradas</h1>
+            <h2>O que deseja fazer?</h2>
 
-            <%    List<Campanha> campanhas
-                        = (List<Campanha>) session.getAttribute("campanhas");
+            <div class="menu">
+                <a class="<%= logada ? "" : "disabled"%>" href="<%= logada ? "ONGsServlet" : "#"%>">ONGs</a>
+                <a class="<%= logada ? "" : "disabled"%>" href="<%= logada ? "EmergenciaServlet" : "#"%>">Emergências</a>
+                <a class="<%= logada ? "" : "disabled"%>" href="<%= logada ? "InsumosServlet" : "#"%>">Insumos</a>
+                <a class="<%= logada ? "" : "disabled"%>" href="<%= logada ? "CampanhaServlet" : "#"%>">Campanhas</a>
+            </div>
 
+            <h2>Campanhas Cadastradas</h2>
+
+            <%    List<Campanha> campanhas = RepositorioCampanha.readAll();
             %>
 
             <table>
 
                 <tr>
-
                     <th>Código</th>
-
                     <th>Período</th>
-
                     <th>Objetivo</th>
-
-                    <th>Descrição</th>
-
                     <th>ONG</th>
-
                     <th>Emergência</th>
-
                     <th>Insumos</th>
-
                 </tr>
 
-                <%    if (campanhas != null) {
-
-                        for (Campanha camp : campanhas) {
+                <%    for (Campanha camp : campanhas) {
 
                 %>
 
@@ -72,35 +73,35 @@
 
                     <td><%= camp.getObjetivo()%></td>
 
-                    <td><%= camp.getDescricao()%></td>
+                    <td><%= camp.getOng() != null ? camp.getOng().getNome() : ""%></td>
 
-                    <td><%= camp.getOng() != null ? camp.getOng().getNome() : "-"%></td>
-
-                    <td><%= camp.getEmergencia() != null ? camp.getEmergencia().getTipo() + " (" + camp.getEmergencia().getLocal() + ")" : "-"%></td>
+                    <td><%= camp.getEmergencia() != null ? camp.getEmergencia().getTipo() : ""%></td>
 
                     <td>
-                        <%
-                            List<Insumos> insumosCampanha = camp.getInsumos();
-                            if (insumosCampanha == null || insumosCampanha.isEmpty()) {
+
+                        <%    List<Insumos> insumos = camp.getInsumos();
+
+                            if (insumos != null) {
+
+                                for (int i = 0; i < insumos.size(); i++) {
+
                         %>
-                        -
+
+                        <%= insumos.get(i).getNome()%><%= i < insumos.size() - 1 ? ", " : ""%>
+
                         <%
-                            } else {
-                                for (int i = 0; i < insumosCampanha.size(); i++) {
-                                    Insumos ins = insumosCampanha.get(i);
-                        %>
-                        <%= ins.getNome()%><%= i < insumosCampanha.size() - 1 ? ", " : ""%>
-                        <%
+
                                 }
+
                             }
+
                         %>
+
                     </td>
 
                 </tr>
 
                 <%
-
-                        }
 
                     }
 
@@ -109,7 +110,6 @@
             </table>
 
         </div>
-
 
     </body>
 </html>

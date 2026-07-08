@@ -10,6 +10,13 @@ public class RepositorioAdmin {
     
     private RepositorioAdmin(){}
     
+    static {
+        Admin ad = new Admin();
+        ad.setLogin("admin");
+        ad.setSenha("admin123");
+        admins.add(ad);
+    }
+    
     public static void create(Admin ad){
         admins.add(ad);
     }

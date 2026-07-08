@@ -34,6 +34,12 @@ public class EmergenciaServlet extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
+        
+        if (session.getAttribute("adminLogado") == null) {
+            session.setAttribute("msg", "Você precisa estar logada para acessar essa área.");
+            response.sendRedirect("index.jsp");
+            return;
+        }
 
         String op = request.getParameter("operacao");
 
@@ -64,6 +70,14 @@ public class EmergenciaServlet extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession session = request.getSession();
+        
+        if (session.getAttribute("adminLogado") == null) {
+            session.setAttribute("msg", "Você precisa estar logada para acessar essa área.");
+            response.sendRedirect("index.jsp");
+            return;
+        }
+        
+        
         String op = request.getParameter("operacao");
         String local = request.getParameter("local");
         String tipo = request.getParameter("tipo");

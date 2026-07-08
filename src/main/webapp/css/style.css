@@ -149,3 +149,102 @@ tr:hover{
     background-color: #1b5fa7;
     transform: translateY(-3px);
 }
+
+
+.navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:#2c3e50;
+    padding:15px 30px;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.navbar .logo{
+    color:white;
+    font-size:1.3rem;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.menu a.disabled{
+    background-color: #adb5bd;
+    color: #eee;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.menu a.disabled:hover{
+    transform:none;
+}
+
+.nav-auth{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.nav-user{
+    color:white;
+    font-weight:bold;
+}
+
+.btn-entrar{
+    background:#2d89ef;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.btn-sair{
+    background:#d9534f;
+    color:white;
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.btn-admin{
+    background:#6c757d;
+    color:white;
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.modal-overlay{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:rgba(0,0,0,.5);
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+}
+
+.modal-box{
+    background:white;
+    width:90%;
+    max-width:420px;
+    padding:30px;
+    border-radius:15px;
+    position:relative;
+}
+
+.modal-fechar{
+    position:absolute;
+    top:12px;
+    right:18px;
+    font-size:1.5rem;
+    cursor:pointer;
+    color:#666;
+}

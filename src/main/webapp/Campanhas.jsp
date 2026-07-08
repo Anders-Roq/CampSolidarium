@@ -18,6 +18,8 @@
 
     <body>
 
+        <%@ include file="Navbar.jsp" %>
+
         <div class="container">
 
             <h1>Campanhas Cadastradas</h1>

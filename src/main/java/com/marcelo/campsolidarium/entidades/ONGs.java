@@ -3,7 +3,7 @@ package com.marcelo.campsolidarium.entidades;
 
 public class ONGs {
     
-    private int codigo;
+   private int codigo;
     
    private String nome;
     

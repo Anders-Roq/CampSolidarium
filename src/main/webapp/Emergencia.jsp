@@ -17,6 +17,8 @@
 
     <body>
 
+        <%@ include file="Navbar.jsp" %>
+        
         <div class="container">
 
             <h1>Emergências Cadastradas</h1>

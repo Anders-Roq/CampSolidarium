@@ -3,7 +3,6 @@ package com.marcelo.campsolidarium.controladores;
 import com.marcelo.campsolidarium.entidades.ONGs;
 import com.marcelo.campsolidarium.repositorios.RepositorioONGs;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,28 +11,17 @@ import jakarta.servlet.http.HttpSession;
 
 public class ONGsServlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ONGsServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ONGsServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+
+        if (session.getAttribute("adminLogado") == null) {
+            session.setAttribute("msg", "Você precisa estar logado para acessar essa área.");
+            response.sendRedirect("index.jsp");
+            return;
+        }
 
         String op = request.getParameter("operacao");
 
@@ -58,12 +46,18 @@ public class ONGsServlet extends HttpServlet {
         response.sendRedirect("ONGs.jsp");
     }
 
-
-     @Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+
+        if (session.getAttribute("adminLogado") == null) {
+            session.setAttribute("msg", "Você precisa estar logado para acessar essa área.");
+            response.sendRedirect("index.jsp");
+            return;
+        }
+
         String op = request.getParameter("operacao");
         String nome = request.getParameter("nome");
         String login = request.getParameter("login_novo");
@@ -88,10 +82,9 @@ public class ONGsServlet extends HttpServlet {
         response.sendRedirect("ONGsServlet");
     }
 
-
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "Servlet responsável pelo CRUD de ONGs (gerenciado pelo Admin)";
+    }
 
 }

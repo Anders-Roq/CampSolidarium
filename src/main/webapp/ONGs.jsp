@@ -7,12 +7,14 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="css/style.css">
-        
+
         <title>ONGs Cadastradas</title>
 
     </head>
 
     <body>
+
+        <%@ include file="Navbar.jsp" %>
 
         <div class="container">
 

@@ -29,11 +29,17 @@ public class InsumosServlet extends HttpServlet {
         }
     }
 
- @Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          
+
         HttpSession session = request.getSession();
+
+        if (session.getAttribute("adminLogado") == null) {
+            session.setAttribute("msg", "Você precisa estar logada para acessar essa área.");
+            response.sendRedirect("index.jsp");
+            return;
+        }
 
         String op = request.getParameter("operacao");
 
@@ -56,15 +62,21 @@ public class InsumosServlet extends HttpServlet {
 
         session.setAttribute("insumos", RepositorioInsumos.readAll());
         response.sendRedirect("Insumos.jsp");
-        
+
     }
 
-
- @Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         HttpSession session = request.getSession();
+
+        if (session.getAttribute("adminLogado") == null) {
+            session.setAttribute("msg", "Você precisa estar logada para acessar essa área.");
+            response.sendRedirect("index.jsp");
+            return;
+        }
+
         String op = request.getParameter("operacao");
         String nome = request.getParameter("nome");
         String marca = request.getParameter("marca");
@@ -89,6 +101,7 @@ public class InsumosServlet extends HttpServlet {
 
         response.sendRedirect("InsumosServlet");
     }
+
     @Override
     public String getServletInfo() {
         return "Short description";
